@@ -1,0 +1,16 @@
+{
+  "description": "This script will reset the sticky alerts for a logfile before they time out (3 days)",
+  "parameters": {
+    "user": {
+      "type": "Optional[String[1]]",
+      "description": "Optional: Name of user to run the unstick as, defaults to icinga"
+    },
+    "config": {
+      "type": "Optional[String[1]]",
+      "description": "The name of the config file in /etc/icinga2/logfiles.d without the .conf suffix"
+    }
+  },
+  "implementations": [
+    {"name": "icinga_reset_logfile_alert.sh"}
+  ]
+}

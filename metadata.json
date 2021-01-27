@@ -1,0 +1,21 @@
+{
+  "name": "joernott/icinga_tasks",
+  "author": "Jörn Ott",
+  "summary": "",
+  "license": "BSD",
+  "source": "https://github.com/joernott/puppet-icinga-tasks.git",
+  "project_page": "https://github.com/joernott/puppet-icinga-tasks",
+  "issues_url": "https://github.com/joernott/puppet-icinga-tasks/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 6.0.0 < 7.0.0"
+    },
+    {
+      "name": "icinga/icinga2",
+      "version_requirement": ">= 3.0.0 < 4.0.0"
+    }
+  ],
+  "data_provider": null,
+  "version": "0.1.0"
+}

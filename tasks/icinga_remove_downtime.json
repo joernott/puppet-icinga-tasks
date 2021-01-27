@@ -1,0 +1,29 @@
+{
+  "description": "This task removes a scheduled downtime in icinga2.",
+
+  "parameters": {
+    "url": {
+      "type": "Optional[String[1]]",
+      "description": "Icinga API base URL, defaults to https://FQDN:5665/v1, where FQDN is obtained via hostname -f"
+    },
+    "user": {
+      "type": "Optional[String[1]]",
+      "description": "Icinga API user, defaults tp 'puppet'"
+    },
+    "type": {
+      "type": "Optional[Enum['Host','Service','Downtime']]",
+      "description": "Type must be either 'Host', 'Service' or 'Downtime'."
+    },
+    "filter": {
+      "type": "Optional[String[1]]",
+      "description": "Filter objects to remove downtime for, e.g. match(\"www*\",host.name)"
+    },
+    "author": {
+      "type": "Optional[String[1]]",
+      "description": "Name of the author of this downtime removal"
+    }
+  },
+  "implementations": [
+    {"name": "icinga_remove_downtime.rb"}
+  ]
+}

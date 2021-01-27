@@ -1,0 +1,60 @@
+{
+  "description": "This task schedules a downtime in icinga2 for hosts or services.",
+  "parameters": {
+    "url": {
+      "type": "Optional[String[1]]",
+      "description": "Icinga API base URL, defaults to https://FQDN:5665/v1, where FQDN is obtained via hostname -f"
+    },
+    "user": {
+      "type": "Optional[String[1]]",
+      "description": "Icinga API user, defaults tp 'puppet'"
+    },
+    "type": {
+      "type": "Enum['Host','Service']",
+      "description": "Type must be either 'Host' or 'Service'"
+    },
+    "filter": {
+      "type": "String[1]",
+      "description": "Filter objects to schedule downtime for, e.g. match(\"www*\",host.name)"
+    },
+    "author": {
+      "type": "String[1]",
+      "description": "Required: Name of the author of this downtime"
+    },
+    "comment": {
+      "type": "String[1]",
+      "description": "Required: Comment for this downtime"
+    },
+    "start": {
+      "type": "String[1]",
+      "description": "Required: Start time, you can use things like 'now' or '5 minutes'"
+    },
+    "end": {
+      "type": "String[1]",
+      "description": "Required: End time, , you can use things like 'now' or '5 minutes'"
+    },
+    "fixed": {
+      "type": "Boolean",
+      "description": "Optional. If true, the downtime is fixed otherwise flexible. Defaults to true."
+    },
+    "duration": {
+      "type": "Integer",
+      "description": "'Duration of the downtime in seconds if fixed is set to false. Defaults to 3600 = 1h"
+    },
+    "all_services": {
+      "type": "Boolean",
+      "description": "Optional, used only if type = host. Set downtime for all services of the matched host objects. Defaults to false."
+    },
+    "trigger_name": {
+      "type": "Optional[String[1]]",
+      "description": "Sets the trigger for a triggered downtime"
+    },
+    "child_options": {
+      "type": "Enum['DowntimeNoChildren', 'DowntimeTriggeredChildren', 'DowntimeNonTriggeredChildren']",
+      "description": "One of DowntimeNoChildren, DowntimeTriggeredChildren, DowntimeNonTriggeredChildren. Defaults to DowntimeNoChildren"
+    }
+  },
+  "implementations": [
+    {"name": "icinga_schedule_downtime.rb"}
+  ]
+}
